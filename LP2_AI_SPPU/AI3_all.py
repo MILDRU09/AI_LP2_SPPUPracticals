@@ -97,10 +97,16 @@ def job_scheduling():
         ("J4", 1, 20)
     ]
 
-    jobs.sort(key=lambda x: x[2], reverse=True)
+    # Function to return profit
+    def get_profit(job):
+        return job[2]
+
+    # Sort jobs according to profit in descending order
+    jobs.sort(key=get_profit, reverse=True)
 
     slots = [None] * 2
 
+    # Schedule jobs
     for job in jobs:
         for i in range(job[1] - 1, -1, -1):
             if slots[i] is None:
@@ -109,7 +115,8 @@ def job_scheduling():
 
     print("\nJob Scheduling:", slots)
 
-# call function
+
+# Call function
 job_scheduling()
 
 
